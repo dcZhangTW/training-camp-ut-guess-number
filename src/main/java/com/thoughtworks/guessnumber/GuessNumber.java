@@ -29,6 +29,20 @@ class GuessNumber {
     }
 
     String guessNumber(String input) {
-        return "4A0B";
+        int inputCount = 0;
+        int resultA = 0;
+        int resultB = 0;
+        while (inputCount < input.length()) {
+            String number = input.substring(inputCount, inputCount + 1);
+            String answerNumber = answer.get(inputCount).toString();
+            if (answerNumber.equals(number)) {
+                resultA += 1;
+            } else if (answer.contains(Integer.valueOf(number))) {
+                resultB += 1;
+            }
+            inputCount ++;
+        }
+
+        return resultA + "A" + resultB + "B";
     }
 }
