@@ -38,4 +38,11 @@ public class GuessNumberTest {
         String result = guessNumber.guessNumber("5678");
         Assert.assertEquals("0A0B", result);
     }
+
+    @Test
+    public void should_return_2A2B_when_two_number_right_position_and_two_number_wrong_position() {
+        GuessNumber guessNumber = new GuessNumber(testAnswer);
+        String result = guessNumber.guessNumber("1243");
+        Assert.assertEquals("2A2B", result);
+    }
 }
