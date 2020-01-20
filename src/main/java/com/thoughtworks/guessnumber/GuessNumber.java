@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.ArrayList;
 
 @Getter
-public class GuessNumber {
+class GuessNumber {
     private ArrayList<Integer> answer;
     private int guessCount = 0;
 
@@ -28,7 +28,7 @@ public class GuessNumber {
         return answer;
     }
 
-    public String guessNumber(String input) {
-        return "";
+    String guessNumber(String input) {
+        return "4A0B";
     }
 }
