@@ -28,7 +28,7 @@ public class GuessNumber {
         return answer;
     }
 
-    public String guessNumber() {
+    public String guessNumber(String input) {
         return "";
     }
 }
