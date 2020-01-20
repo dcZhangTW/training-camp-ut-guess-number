@@ -31,4 +31,11 @@ public class GuessNumberTest {
         String result = guessNumber.guessNumber("1234");
         Assert.assertEquals("4A0B", result);
     }
+
+    @Test
+    public void should_return_0A0B_when_all_number_and_position_wrong() {
+        GuessNumber guessNumber = new GuessNumber(testAnswer);
+        String result = guessNumber.guessNumber("5678");
+        Assert.assertEquals("0A0B", result);
+    }
 }
