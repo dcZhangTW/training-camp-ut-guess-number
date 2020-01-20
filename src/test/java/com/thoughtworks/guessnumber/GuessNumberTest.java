@@ -45,4 +45,11 @@ public class GuessNumberTest {
         String result = guessNumber.guessNumber("1243");
         Assert.assertEquals("2A2B", result);
     }
+
+    @Test
+    public void should_return_wrong_input_when_not_give_4_number() {
+        GuessNumber guessNumber = new GuessNumber(testAnswer);
+        String result = guessNumber.guessNumber("12");
+        Assert.assertEquals("Wrong Input, input again", result);
+    }
 }
