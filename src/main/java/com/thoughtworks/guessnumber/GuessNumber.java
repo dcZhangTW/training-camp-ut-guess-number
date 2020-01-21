@@ -9,6 +9,9 @@ class GuessNumber {
     private ArrayList<Integer> answer;
     private int guessCount = 0;
 
+    public static String WRONG_INPUT_MSG = "Wrong Input, input again";
+    public static String GAME_OVER = "Game over";
+
     GuessNumber() {
         this.answer = generateAnswer();
     }
@@ -52,7 +55,7 @@ class GuessNumber {
         int resultB = 0;
 
         if (checkInputString(input)) {
-            return "Wrong Input, input again";
+            return WRONG_INPUT_MSG;
         }
 
         while (inputCount < input.length()) {
@@ -69,12 +72,12 @@ class GuessNumber {
         if (resultA < 4) {
             guessCount ++;
             if (guessCount == 6) {
-                return "Game over";
+                return GAME_OVER;
             }
         }
 
         if (guessCount > 6) {
-            return "Game over";
+            return GAME_OVER;
         }
 
         return resultA + "A" + resultB + "B";
