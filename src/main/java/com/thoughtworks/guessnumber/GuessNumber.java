@@ -32,6 +32,11 @@ class GuessNumber {
         int inputCount = 0;
         int resultA = 0;
         int resultB = 0;
+
+        if (input.length() != 4) {
+            return "Wrong Input, input again";
+        }
+
         while (inputCount < input.length()) {
             String number = input.substring(inputCount, inputCount + 1);
             String answerNumber = answer.get(inputCount).toString();
