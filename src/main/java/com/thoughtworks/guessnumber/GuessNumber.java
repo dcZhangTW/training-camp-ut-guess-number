@@ -28,12 +28,30 @@ class GuessNumber {
         return answer;
     }
 
+    private boolean checkInputString(String input) {
+        int inputCount = 0;
+
+        if (input.length() != 4) return true;
+        boolean result = false;
+
+        while (inputCount < input.length()) {
+            String number = input.substring(inputCount, inputCount + 1);
+            if (input.indexOf(number) != input.lastIndexOf(number)) {
+                result = true;
+                break;
+            }
+            inputCount++;
+        }
+
+        return result;
+    }
+
     String guessNumber(String input) {
         int inputCount = 0;
         int resultA = 0;
         int resultB = 0;
 
-        if (input.length() != 4) {
+        if (checkInputString(input)) {
             return "Wrong Input, input again";
         }
 
@@ -46,6 +64,17 @@ class GuessNumber {
                 resultB += 1;
             }
             inputCount ++;
+        }
+
+        if (resultA < 4) {
+            guessCount ++;
+            if (guessCount == 6) {
+                return "Game over";
+            }
+        }
+
+        if (guessCount > 6) {
+            return "Game over";
         }
 
         return resultA + "A" + resultB + "B";

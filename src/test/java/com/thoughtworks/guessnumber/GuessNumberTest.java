@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GuessNumberTest {
 
@@ -58,5 +60,17 @@ public class GuessNumberTest {
         GuessNumber guessNumber = new GuessNumber(testAnswer);
         String result = guessNumber.guessNumber("1223");
         Assert.assertEquals("Wrong Input, input again", result);
+    }
+
+    @Test
+    public void should_return_game_over_when_input_over_6_times() {
+        GuessNumber guessNumber = new GuessNumber(testAnswer);
+        guessNumber.guessNumber("1243");
+        guessNumber.guessNumber("1243");
+        guessNumber.guessNumber("1243");
+        guessNumber.guessNumber("1243");
+        guessNumber.guessNumber("1243");
+        String result = guessNumber.guessNumber("1243");
+        Assert.assertEquals("Game over", result);
     }
 }
