@@ -52,4 +52,11 @@ public class GuessNumberTest {
         String result = guessNumber.guessNumber("12");
         Assert.assertEquals("Wrong Input, input again", result);
     }
+
+    @Test
+    public void should_return_wrong_input_when_has_same_number() {
+        GuessNumber guessNumber = new GuessNumber(testAnswer);
+        String result = guessNumber.guessNumber("1223");
+        Assert.assertEquals("Wrong Input, input again", result);
+    }
 }
