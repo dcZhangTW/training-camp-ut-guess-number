@@ -3,6 +3,7 @@ package com.thoughtworks.guessnumber;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 @Getter
 class GuessNumber {
@@ -54,6 +55,10 @@ class GuessNumber {
         int resultA = 0;
         int resultB = 0;
 
+        if (guessCount > 6) {
+            return GAME_OVER;
+        }
+
         if (checkInputString(input)) {
             return WRONG_INPUT_MSG;
         }
@@ -72,14 +77,28 @@ class GuessNumber {
         if (resultA < 4) {
             guessCount ++;
             if (guessCount == 6) {
-                return GAME_OVER;
+                return GAME_OVER + "Answer:" + answer;
             }
         }
 
-        if (guessCount > 6) {
-            return GAME_OVER;
-        }
-
         return resultA + "A" + resultB + "B";
+    }
+
+    public static void main(String[] args) {
+        String lastResult = "";
+        ArrayList<String> results = new ArrayList<>();
+        GuessNumber guessNumber = new GuessNumber();
+        System.out.println("Welcome to guess number game, please input your first guess:");
+        Scanner scanner = new Scanner(System.in);
+        while (!lastResult.equals(GuessNumber.GAME_OVER) && !lastResult.equals("4A0B")) {
+            String firstInput = scanner.nextLine();
+            String firstResult = guessNumber.guessNumber(firstInput);
+            if (results.size() > 0) {
+                results.forEach(System.out::println);
+            }
+            System.out.println("本次输入结果：" + firstResult);
+            results.add(firstResult);
+            lastResult = firstResult;
+        }
     }
 }
